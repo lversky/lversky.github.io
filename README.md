@@ -1,1 +1,0 @@
-# lversky.github.io
