@@ -14,7 +14,7 @@ This project is designed to provide a single hub where visitors can quickly acce
 You can view the live version of my Link in Bio page here: [LzveSky.pages.dev](https://lzvesky.pages.dev/)
 
 ## License
-**Important:** <u>All rights reserved</u>. This project is licensed under a custom license that explicitly prohibits copying, reuse, or redistribution of this code or design in any form. For more information, check out the license [here](#license.md).
+**Important:** ***All rights reserved***. This project is licensed under a custom license that explicitly prohibits copying, reuse, or redistribution of this code or design in any form. For more information, check out the license [here](/license.md).
 
 ---
 
