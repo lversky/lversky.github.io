@@ -1,0 +1,50 @@
+# LZVE.ly
+
+Personal website for **LzvelySky** — live at <https://lversky.github.io/>.
+
+A single-page portfolio: about, skills & stack, timeline, live GitHub stats, and contact.
+
+## Stack
+
+Plain HTML, CSS, and vanilla JavaScript. No build step, no dependencies — GitHub Pages
+serves the files as-is.
+
+```
+index.html          markup + inline SVG icon sprite
+css/style.css       theming, layout, animations
+js/main.js          theme toggle, nav, scroll spy, GitHub API
+assets/favicon.svg  monogram favicon
+```
+
+## Features
+
+- **Light / dark / system theme** — follows `prefers-color-scheme` by default, with a
+  manual toggle that cycles system → light → dark. The choice is stored in
+  `localStorage` and applied before first paint to avoid a flash.
+- **Live GitHub stats** — public repo, follower, following, and star counts plus a
+  grid of recent repositories, fetched from the GitHub REST API. Results are cached
+  in `localStorage` for 15 minutes and the section degrades gracefully if the API is
+  unreachable or rate-limited.
+- **Scroll spy** nav, mobile drawer, and scroll-reveal animations that respect
+  `prefers-reduced-motion`.
+- **Responsive** from ~320px up, with print styles included.
+
+## Local preview
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+The GitHub API is called over `https://` and works from `file://` too, but a local
+server is more representative of production.
+
+## Deploying
+
+Push to the `main` branch of `lversky/lversky.github.io`. Pages settings should be
+set to deploy from the branch root with Jekyll disabled — the `.nojekyll` file is
+already committed so the repository is served verbatim.
+
+## License
+
+[BSD 3-Clause](LICENSE) © LZVE.ly
