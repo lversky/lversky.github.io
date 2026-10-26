@@ -10,7 +10,7 @@
   // Set this to your Cloudflare Worker URL after deploying roblox/worker.js
   // Example: 'https://roblox-proxy.your-subdomain.workers.dev/?url='
   // Leave empty to attempt direct fetch (will likely fail due to CORS).
-  var PROXY_URL = '';
+  var PROXY_URL = 'https://roblox.lzvesky.workers.dev/?url=';
   var CORS_PROXY = PROXY_URL || '';
   var API = {
     user: CORS_PROXY ? CORS_PROXY + encodeURIComponent('https://users.roblox.com/v1/users/' + USER_ID) : 'https://users.roblox.com/v1/users/' + USER_ID,
