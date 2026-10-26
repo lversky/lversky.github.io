@@ -1,0 +1,66 @@
+name: Update Roblox Data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Roblox data
+        run: |
+          mkdir -p roblox
+          USER_ID=5031624447
+          
+          # User info
+          curl -s "https://users.roblox.com/v1/users/$USER_ID" > /tmp/user.json
+          
+          # Avatar
+          curl -s "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=$USER_ID&size=420x420&format=Png" > /tmp/avatar.json
+          
+          # Games
+          curl -s "https://games.roblox.com/v2/users/$USER_ID/games?accessFilter=Public&limit=50&sortOrder=Desc" > /tmp/games.json
+          
+          # Groups
+          curl -s "https://groups.roblox.com/v1/users/$USER_ID/groups/roles" > /tmp/groups.json
+          
+          # Combine into single JSON
+          python3 -c "
+          import json
+          user = json.load(open('/tmp/user.json'))
+          avatar = json.load(open('/tmp/avatar.json'))
+          games = json.load(open('/tmp/games.json'))
+          groups = json.load(open('/tmp/groups.json'))
+          
+          avatar_url = ''
+          if avatar.get('data') and avatar['data'][0].get('state') == 'Completed':
+              avatar_url = avatar['data'][0].get('imageUrl', '')
+          
+          data = {
+              'user': user,
+              'avatar': avatar_url,
+              'games': games.get('data', []),
+              'groups': groups.get('data', []),
+              'updated': __import__('datetime').datetime.utcnow().isoformat() + 'Z'
+          }
+          json.dump(data, open('roblox/data.json', 'w'), indent=2)
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add roblox/data.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update Roblox data [automated]"
+            git push
+          fi

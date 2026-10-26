@@ -1,0 +1,136 @@
+{
+  "user": {
+    "description": "lzve,living-the,life/roblox",
+    "created": "2023-09-15T03:17:43.2Z",
+    "isBanned": false,
+    "externalAppDisplayName": null,
+    "hasVerifiedBadge": false,
+    "id": 5031624447,
+    "name": "hydro_ex3",
+    "displayName": "LzveAtlas"
+  },
+  "avatar": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E400D681916CED5CA2FD427DD3ABD5F9-Png/150/150/AvatarHeadshot/Png/noFilter",
+  "games": [
+    {
+      "id": 10652994483,
+      "name": "Untitled Experience",
+      "description": null,
+      "creator": {
+        "id": 5031624447,
+        "type": "User"
+      },
+      "rootPlace": {
+        "id": 80857789031147,
+        "type": "Place"
+      },
+      "created": "2026-08-08T04:07:04.837Z",
+      "updated": "2026-08-08T05:46:21.773Z",
+      "placeVisits": 0
+    }
+  ],
+  "groups": [
+    {
+      "group": {
+        "id": 35884771,
+        "name": "already arrived studios",
+        "description": "",
+        "owner": {
+          "hasVerifiedBadge": true,
+          "userId": 9587300541,
+          "username": "AlreadyArrivedHolder",
+          "displayName": "AlreadyArrivedHolder"
+        },
+        "shout": null,
+        "memberCount": 1322024,
+        "isBuildersClubOnly": false,
+        "publicEntryAllowed": true,
+        "hasVerifiedBadge": true,
+        "hasSocialModules": true
+      },
+      "role": {
+        "id": 354232106,
+        "name": "Supporter",
+        "rank": 1,
+        "color": 0
+      }
+    },
+    {
+      "group": {
+        "id": 2782840,
+        "name": "Chillz Studios",
+        "description": "\ud83c\udf1f Welcome to Chillz Studios! \ud83c\udf1f\r\n\r\n~Join for game perks, news, and more!\r\n~Always accepting new ideas and feedback~\r\n~Collect badges in group games to rank up!\r\n\r\n-------About ranks:\r\nNormal members cannot post comments on the group wall. This is to prevent bot accounts from posting on the wall. There are no additional group perks above royal member. Although the mega and royal member ranks can be attained by anyone, the other ranks can not be attained. Anyone with one of these ranks have helped improve the group. If a contributor is abusing their role, such as using it to gain robux, please report this to the owner or co-owners.",
+        "owner": {
+          "hasVerifiedBadge": true,
+          "userId": 3140542,
+          "username": "chillthrill709",
+          "displayName": "chillthrill709"
+        },
+        "shout": null,
+        "memberCount": 18639007,
+        "isBuildersClubOnly": false,
+        "publicEntryAllowed": true,
+        "hasVerifiedBadge": true,
+        "hasSocialModules": true
+      },
+      "role": {
+        "id": 22745106,
+        "name": "\ud83c\udf1fRoyal Member\ud83c\udf1f",
+        "rank": 150,
+        "color": 0
+      }
+    },
+    {
+      "group": {
+        "id": 5018665,
+        "name": "Ultraw Games",
+        "description": "Game Development Group\n\nFollow our devs \ud83c\udfc6\n\ud83d\ude03Ultraw - https://www.roblox.com/users/13042801/profile\n\ud83d\ude01Dan - https://www.roblox.com/users/124525739/profile\n\ud83e\udd86Duck_Ify https://www.roblox.com/users/52880156/profile",
+        "owner": {
+          "hasVerifiedBadge": true,
+          "userId": 13042801,
+          "username": "Ultraw",
+          "displayName": "UltrawGames"
+        },
+        "shout": null,
+        "memberCount": 765732,
+        "isBuildersClubOnly": false,
+        "publicEntryAllowed": true,
+        "hasVerifiedBadge": false,
+        "hasSocialModules": true
+      },
+      "role": {
+        "id": 12884901889,
+        "name": "Member",
+        "rank": 1,
+        "isBase": true,
+        "color": 0
+      }
+    },
+    {
+      "group": {
+        "id": 7,
+        "name": "Roblox",
+        "description": "Official fan club of Roblox!",
+        "owner": {
+          "hasVerifiedBadge": false,
+          "userId": 21557,
+          "username": "Games",
+          "displayName": "Games"
+        },
+        "shout": null,
+        "memberCount": 13514139,
+        "isBuildersClubOnly": false,
+        "publicEntryAllowed": true,
+        "hasVerifiedBadge": true,
+        "hasSocialModules": true
+      },
+      "role": {
+        "id": 200,
+        "name": "Member",
+        "rank": 1,
+        "color": 0
+      },
+      "isPrimaryGroup": true
+    }
+  ],
+  "updated": "2026-10-26T09:37:28.539372Z"
+}

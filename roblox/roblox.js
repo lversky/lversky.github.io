@@ -10,16 +10,113 @@
   // Set this to your Cloudflare Worker URL after deploying roblox/worker.js
   // Example: 'https://roblox-proxy.your-subdomain.workers.dev/?url='
   // Leave empty to attempt direct fetch (will likely fail due to CORS).
-  var PROXY_URL = 'https://roblox.lzvesky.workers.dev/?url=';
-  var CORS_PROXY = PROXY_URL || '';
-  var API = {
-    user: CORS_PROXY ? CORS_PROXY + encodeURIComponent('https://users.roblox.com/v1/users/' + USER_ID) : 'https://users.roblox.com/v1/users/' + USER_ID,
-    avatar: CORS_PROXY ? CORS_PROXY + encodeURIComponent('https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=' + USER_ID + '&size=420x420&format=Png') : 'https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=' + USER_ID + '&size=420x420&format=Png',
-    games: CORS_PROXY ? CORS_PROXY + encodeURIComponent('https://games.roblox.com/v2/users/' + USER_ID + '/games?accessFilter=Public&limit=50&sortOrder=Desc') : 'https://games.roblox.com/v2/users/' + USER_ID + '/games?accessFilter=Public&limit=50&sortOrder=Desc',
-    groups: CORS_PROXY ? CORS_PROXY + encodeURIComponent('https://groups.roblox.com/v1/users/' + USER_ID + '/groups/roles') : 'https://groups.roblox.com/v1/users/' + USER_ID + '/groups/roles'
-  };
+  var DATA_URL = '../roblox/data.json';
+  var API = {}; // not used directly anymore; data comes from data.json
 
-  function el(id) { return document.getElementById(id); }
+  function loadFromData() {
+    fetch(DATA_URL)
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        var user = data.user || {};
+        var nameEl = el('rbx-display-name');
+        if (nameEl && user.displayName) nameEl.textContent = user.displayName;
+        var descEl = el('rbx-description');
+        if (descEl) descEl.textContent = user.description || 'No description set.';
+        setStat('rbx-joined', fmtDate(user.created));
+        setStat('rbx-user-id', user.id);
+        var meta = el('rbx-meta');
+        if (meta && user.name) {
+          meta.innerHTML = '';
+          var span = document.createElement('span');
+          span.className = 'pill pill-pronouns';
+          span.textContent = '@' + user.name;
+          meta.appendChild(span);
+        }
+        var status = el('rbx-status');
+        if (status) status.textContent = user.isBanned ? 'Banned' : 'Active';
+        if (data.avatar) {
+          var avatar = el('rbx-avatar');
+          if (avatar) avatar.src = data.avatar;
+        }
+
+        var games = data.games || [];
+        setStat('rbx-games-count', games.length);
+        var grid = el('rbx-games');
+        if (grid && games.length) {
+          grid.innerHTML = '';
+          var frag = document.createDocumentFragment();
+          games.forEach(function (game) {
+            var card = document.createElement('article');
+            card.className = 'repo-card';
+            var title = document.createElement('a');
+            title.className = 'repo-title';
+            title.href = 'https://www.roblox.com/games/' + game.id;
+            title.target = '_blank';
+            title.rel = 'noopener';
+            title.textContent = game.name;
+            var desc = document.createElement('p');
+            desc.className = 'repo-desc';
+            desc.textContent = game.description || 'No description.';
+            var foot = document.createElement('div');
+            foot.className = 'repo-foot';
+            if (typeof game.playing === 'number') {
+              var playing = document.createElement('span');
+              playing.textContent = game.playing.toLocaleString() + ' playing';
+              foot.appendChild(playing);
+            }
+            if (typeof game.visits === 'number') {
+              var visits = document.createElement('span');
+              visits.textContent = game.visits.toLocaleString() + ' visits';
+              foot.appendChild(visits);
+            }
+            card.appendChild(title);
+            card.appendChild(desc);
+            card.appendChild(foot);
+            frag.appendChild(card);
+          });
+          grid.appendChild(frag);
+        }
+
+        var groups = data.groups || [];
+        setStat('rbx-groups-count', groups.length);
+        var ggrid = el('rbx-groups');
+        if (ggrid && groups.length) {
+          ggrid.innerHTML = '';
+          groups.forEach(function (entry) {
+            var g = entry.group || {};
+            var role = entry.role || {};
+            var card = document.createElement('a');
+            card.className = 'contact-card';
+            card.href = 'https://www.roblox.com/groups/' + g.id;
+            card.target = '_blank';
+            card.rel = 'noopener';
+            var icon = document.createElement('span');
+            icon.className = 'contact-icon';
+            icon.textContent = '👥';
+            var text = document.createElement('span');
+            text.className = 'contact-text';
+            var strong = document.createElement('strong');
+            strong.textContent = g.name || 'Unknown group';
+            var span = document.createElement('span');
+            span.textContent = role.name || 'Member';
+            text.appendChild(strong);
+            text.appendChild(span);
+            var arrow = document.createElement('svg');
+            arrow.className = 'icon contact-arrow';
+            arrow.setAttribute('aria-hidden', 'true');
+            var use = document.createElement('use');
+            use.setAttribute('href', '#i-arrow');
+            arrow.appendChild(use);
+            card.appendChild(icon);
+            card.appendChild(text);
+            card.appendChild(arrow);
+            ggrid.appendChild(card);
+          });
+        }
+      })
+      .catch(function () { /* keep static fallback */ });
+  }
 
   function fmtDate(iso) {
     if (!iso) return '—';
@@ -251,8 +348,5 @@
   }
 
   /* ---------- Boot ---------- */
-  loadUser();
-  loadAvatar();
-  loadGames();
-  loadGroups();
+  loadFromData();
 })();
