@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roblox — LzvelySky</title>
+<meta name="description" content="LzvelySky's Roblox profile — live stats, games, and groups, pulled from the Roblox API.">
+<meta name="author" content="LzvelySky">
+<meta name="theme-color" content="#0b0710" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fdfaff" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
+<link rel="canonical" href="https://lzve.living-the.life/roblox">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var saved = localStorage.getItem('theme');
+      var system = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = saved || system;
+    } catch (e) {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  })();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-repo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5.5h16v13H4zM4 9.5h16M9.5 9.5v9"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.38-3.88-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></symbol>
+    <symbol id="i-roblox" viewBox="0 0 24 24"><path fill="currentColor" d="M4.85 1.5 1.5 19.15 19.15 22.5 22.5 4.85 4.85 1.5Zm6.5 13.2-3.1-3.1 3.1-3.1 3.1 3.1-3.1 3.1Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="../index.html" aria-label="LZVE.ly home">
+      <span class="brand-mark">L</span>
+      <span class="brand-text">LZVE<span class="brand-dot">.ly</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#timeline">Timeline</a>
+      <a href="../index.html#github">GitHub</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="./" class="active">Roblox</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg class="icon icon-auto" aria-hidden="true"><use href="#i-auto"/></svg>
+        <svg class="icon icon-light" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon icon-dark" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow reveal"><svg class="icon" aria-hidden="true"><use href="#i-roblox"/></svg> Roblox</p>
+        <h1 class="reveal" id="rbx-display-name">LzveAtlas</h1>
+        <p class="hero-role reveal" id="rbx-username">@hydro_ex3</p>
+        <p class="hero-bio reveal" id="rbx-description">lzve,living-the,life/roblox</p>
+        <div class="hero-meta reveal" id="rbx-meta"></div>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" id="rbx-profile-link" href="https://www.roblox.com/users/5031624447/profile" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-roblox"/></svg> View on Roblox
+          </a>
+          <a class="btn btn-ghost" href="../index.html">
+            ← Back to portfolio
+          </a>
+        </div>
+      </div>
+      <div class="hero-art reveal">
+        <div class="avatar-ring">
+          <img class="avatar" id="rbx-avatar" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E400D681916CED5CA2FD427DD3ABD5F9-Png/150/150/AvatarHeadshot/Png/noFilter" alt="Roblox avatar" width="240" height="240">
+        </div>
+        <div class="status-card">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="rbx-status">Active</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="stats">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="section-index">01</span>
+        <h2>Account</h2>
+      </header>
+      <div class="stat-row" id="rbx-stat-row">
+        <div class="stat"><span class="stat-value" id="rbx-joined">Sep 15, 2023</span><span class="stat-label">Joined</span></div>
+        <div class="stat"><span class="stat-value" id="rbx-games-count">1</span><span class="stat-label">Public games</span></div>
+        <div class="stat"><span class="stat-value" id="rbx-groups-count">4</span><span class="stat-label">Groups</span></div>
+        <div class="stat"><span class="stat-value" id="rbx-user-id">5031624447</span><span class="stat-label">User ID</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="games">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="section-index">02</span>
+        <h2>Games</h2>
+      </header>
+      <div class="repo-grid" id="rbx-games">
+        <article class="repo-card">
+          <a class="repo-title" href="https://www.roblox.com/games/" target="_blank" rel="noopener">Untitled Experience</a>
+          <p class="repo-desc">No description.</p>
+          <div class="repo-foot">
+            <span>0 playing</span>
+            <span>0 visits</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="groups">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="section-index">03</span>
+        <h2>Groups</h2>
+      </header>
+      <div class="contact-grid" id="rbx-groups">
+        <a class="contact-card" href="https://www.roblox.com/groups/" target="_blank" rel="noopener">
+          <span class="contact-icon">👥</span>
+          <span class="contact-text"><strong>already arrived studios</strong><span>Supporter</span></span>
+          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="contact-card" href="https://www.roblox.com/groups/" target="_blank" rel="noopener">
+          <span class="contact-icon">👥</span>
+          <span class="contact-text"><strong>Chillz Studios</strong><span>🌟Royal Member🌟</span></span>
+          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="contact-card" href="https://www.roblox.com/groups/" target="_blank" rel="noopener">
+          <span class="contact-icon">👥</span>
+          <span class="contact-text"><strong>Ultraw Games</strong><span>Member</span></span>
+          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="contact-card" href="https://www.roblox.com/groups/" target="_blank" rel="noopener">
+          <span class="contact-icon">👥</span>
+          <span class="contact-text"><strong>Roblox</strong><span>Member</span></span>
+          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Built by <strong>LzvelySky</strong> — <a href="https://github.com/lversky/lversky.github.io" target="_blank" rel="noopener">source on GitHub</a></p>
+    <p class="footer-meta">BSD 3-Clause &middot; <span id="year"></span> &middot; Data from <a href="https://www.roblox.com" target="_blank" rel="noopener">Roblox</a></p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="roblox.js"></script>
+</body>
+</html>
