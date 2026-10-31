@@ -1,451 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LzvelySky — LZVE.ly</title>
-<meta name="description" content="LzvelySky (LZVE.ly) — designer, manufacturer, and coder working on AI, robotics, embedded systems, and accessible web design.">
-<meta name="author" content="LzvelySky">
-<meta name="theme-color" content="#0b0710" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fdfaff" media="(prefers-color-scheme: light)">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="LzvelySky — LZVE.ly">
-<meta property="og:description" content="Designer, manufacturer, and coder working on AI, robotics, and accessibility.">
-<meta property="og:url" content="https://lversky.github.io/">
-<meta property="og:image" content="https://avatars.githubusercontent.com/u/196835305?v=4">
-<meta name="twitter:card" content="summary">
-
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/favicon.svg">
-<link rel="canonical" href="https://lversky.github.io/">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-
-<script>
-  (function () {
-    document.documentElement.classList.add('js');
-    try {
-      var saved = localStorage.getItem('theme');
-      var system = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.dataset.theme = saved || system;
-    } catch (e) {
-      document.documentElement.dataset.theme = 'dark';
-    }
-  })();
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LzvelySky — LZVE.ly</title>
+  <meta name="description" content="LzvelySky is a designer, manufacturer, and coder working across generative AI, robotics, embedded systems, and accessible design.">
+  <meta name="author" content="LzvelySky">
+  <meta name="theme-color" content="#f3f0e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171916" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LzvelySky — LZVE.ly">
+  <meta property="og:description" content="Designer, manufacturer, coder. Work across code, hardware, and accessible design.">
+  <meta property="og:url" content="https://lzve.living-the.life/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/196835305?v=4">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://lzve.living-the.life/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        document.documentElement.dataset.theme = saved || 'auto';
+      } catch (_) {
+        document.documentElement.dataset.theme = 'auto';
+      }
+    })();
+  </script>
 </head>
-
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<svg class="icon-sprite" aria-hidden="true" focusable="false">
-  <defs>
-    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.38-3.88-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></symbol>
-    <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.24 2H21.5l-7.38 8.44L22.75 22h-6.8l-5.33-6.97L4.6 22H1.33l7.89-9.02L1.25 2h6.97l4.81 6.35L18.24 2Zm-1.2 18h1.8L7.02 3.85H5.09L17.04 20Z"/></symbol>
-    <symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M19.3 5.4A16.1 16.1 0 0 0 15.2 4l-.2.4a12.4 12.4 0 0 1 3.7 1.7 15.9 15.9 0 0 0-13.4 0A12.4 12.4 0 0 1 9 4.4L8.8 4a16.1 16.1 0 0 0-4.1 1.4C2 9.1 1.3 12.7 1.6 16.3a16.2 16.2 0 0 0 4.9 2.5l.9-1.5c-.8-.3-1.6-.7-2.3-1.1l.6-.4c4.4 2 9.2 2 13.6 0l.6.4c-.7.4-1.5.8-2.3 1.1l.9 1.5a16.2 16.2 0 0 0 4.9-2.5c.4-4.2-.7-7.8-2.7-10.9ZM8.7 14.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Z"/></symbol>
-    <symbol id="i-snapchat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.6c-3.2 0-5.7 2.6-5.7 5.8v.7c-.2.1-.5.2-.8.2-.6 0-1.4-.2-1.7.3-.3.4-.1 1.1.2 1.4.2.2.7.3 1 .4.3.1.6.2.6.5 0 .3-.3.5-.7.7-.5.3-.6.7-.3 1.1.3.5 1.3.6 2 .8.2.1.4.2.4.5 0 .4-.5 1.1-1 1.4-.4.2-.6.5-.3.8.4.4 1.5.5 2.2.6.4 0 .6.1.7.4.3.7 1.3 1.3 2.4 1.3h.3c-.1.5-.5 1-.9 1.4-.3.3-.2.7.2.8.8.3 2 .4 2.9.4s2.1-.1 2.9-.4c.4-.1.5-.5.2-.8-.4-.4-.8-.9-.9-1.4h.3c1.1 0 2.1-.6 2.4-1.3.1-.3.3-.4.7-.4.7-.1 1.8-.2 2.2-.6.3-.3.1-.6-.3-.8-.5-.3-1-1-1-1.4 0-.3.2-.4.4-.5.7-.2 1.7-.3 2-.8.3-.4.2-.8-.3-1.1-.4-.2-.7-.4-.7-.7 0-.3.3-.4.6-.5.3-.1.8-.2 1-.4.3-.3.5-1 .2-1.4-.3-.5-1.1-.3-1.7-.3-.3 0-.6-.1-.8-.2v-.7c0-3.2-2.5-5.8-5.7-5.8Z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 6.5h18v11H3zM3 7l9 6.5L21 7"/></symbol>
-    <symbol id="i-music" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l11-2v13M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm11-2a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/></symbol>
-    <symbol id="i-link" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 13a4 4 0 0 0 5.7.4l3-3a4 4 0 0 0-5.7-5.7l-1.7 1.7M14 11a4 4 0 0 0-5.7-.4l-3 3a4 4 0 0 0 5.7 5.7l1.7-1.7"/></symbol>
-    <symbol id="i-orcid" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0ZM8.34 6.13h1.2v11.74h-1.2V6.13Zm-.6 5.87h2.4v5.87h-1.2v-4.67H8.94v-.8h.8v-.8h-1.2v-.8h1.2Zm5.2 0h4.1c3.5 0 5.7 2.3 5.7 5.87 0 3.6-2.2 5.87-5.7 5.87h-4.1V12Zm1.2 1.2v9.34h2.7c2.6 0 4.3-1.8 4.3-4.67s-1.7-4.67-4.3-4.67h-2.7Z"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 4.5V2M12 22v-2.5M4.5 12H2M22 12h-2.5M6.7 6.7 4.9 4.9M19.1 19.1l-1.8-1.8M17.3 6.7l1.8-1.8M4.9 19.1l1.8-1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
-    <symbol id="i-auto" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 9 9h-9V3Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M15 3.6A9 9 0 0 1 20.4 9H15V3.6Z"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></symbol>
-    <symbol id="i-repo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5.5h16v13H4zM4 9.5h16M9.5 9.5v9"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
-    <symbol id="i-sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.8 13.7 8l6.2 1.7-6.2 1.7L12 17.6l-1.7-6.2L4.1 9.7 10.3 8 12 1.8Zm7.2 12.6.9 3 3 .9-3 .9-.9 3-.9-3-3-.9 3-.9.9-3ZM5 15.9l.7 2.2 2.2.7-2.2.7-.7 2.2-.7-2.2-2.2-.7 2.2-.7.7-2.2Z"/></symbol>
-    <symbol id="i-code" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.6 4.5l-3.2 15"/></symbol>
-  </defs>
-</svg>
-
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="LZVE.ly home">
-      <span class="brand-mark">L</span>
-      <span class="brand-text">LZVE<span class="brand-dot">.ly</span></span>
-    </a>
-
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#github">GitHub</a>
-      <a href="roblox/">Roblox</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-        <svg class="icon icon-auto" aria-hidden="true"><use href="#i-auto"/></svg>
-        <svg class="icon icon-light" aria-hidden="true"><use href="#i-sun"/></svg>
-        <svg class="icon icon-dark" aria-hidden="true"><use href="#i-moon"/></svg>
+  <header class="masthead" id="top">
+    <div class="page-shell masthead-inner">
+      <a class="wordmark" href="#top" aria-label="LZVE.ly home">LZVE<span>.ly</span></a>
+      <p class="masthead-note">Independent practice <span aria-hidden="true">/</span> United States</p>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span></span><span></span>
       </button>
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span><span></span>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#github">GitHub</a>
+        <a href="roblox/">Roblox</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Change color theme" title="Change color theme">
+        <span aria-hidden="true">◐</span><span class="theme-label">Auto</span>
       </button>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="main">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow reveal"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg> LZVE.ly</p>
-        <h1 class="reveal">LzvelySky</h1>
-        <p class="hero-role reveal">Designer &middot; Manufacturer &middot; Coder — working on AI, robotics, and accessible design.</p>
-        <p class="hero-bio reveal">
-          I'm a high school student, tech innovator, and builder specializing in coding and machine learning.
-          I design and manufacture hardware, write full-stack software, and care deeply about making technology
-          usable for everyone.<sup class="fn-ref"><a href="#fn-1" id="fnref-1" role="doc-noteref" aria-describedby="fn-1">1</a></sup>
-        </p>
-        <div class="hero-meta reveal">
-          <span class="pill pill-pronouns">he / they</span>
-          <span class="pill">USA</span>
-          <span class="pill">FRC Alumni</span>
-          <span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg> @lversky</span>
-        </div>
-        <div class="hero-actions reveal">
-          <a class="btn btn-primary" href="https://github.com/lversky">
-            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub
-          </a>
-          <a class="btn btn-ghost" href="#contact">
-            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Get in touch
-          </a>
-          <a class="btn btn-ghost" href="https://redirect-lzve-ly.pages.dev?to=https://lzvesky.yrs.wtf" target="_blank" rel="noopener">
-            Other site <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+  <main id="main">
+    <section class="hero page-shell" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <p class="overline"><span class="live-mark" aria-hidden="true"></span> A small record of things in progress</p>
+        <h1 id="hero-title">Code, hardware,<br><em>and the things</em><br>between.</h1>
+        <p class="hero-intro">I’m <strong>LzvelySky</strong> — a designer, manufacturer, and coder. I make software and physical things, with a particular interest in AI, robotics, and making technology easier to use.</p>
+        <div class="hero-links">
+          <a class="text-link" href="https://github.com/lversky" target="_blank" rel="noopener">Browse my GitHub <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#contact">Get in touch <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
-      <div class="hero-art reveal">
-        <div class="avatar-ring">
-          <img class="avatar" src="https://avatars.githubusercontent.com/u/196835305?v=4" alt="LzvelySky" width="240" height="240">
+      <aside class="hero-side" aria-label="Profile notes">
+        <figure class="portrait-note">
+          <img src="https://avatars.githubusercontent.com/u/196835305?v=4" alt="LzvelySky's GitHub profile portrait" width="240" height="240">
+          <figcaption><span>@lversky</span><span>He / they · USA</span></figcaption>
+        </figure>
+        <div class="wiring-note">
+          <p class="note-label">A working map <span>01—03</span></p>
+          <svg class="wiring-diagram" viewBox="0 0 420 190" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">A map of the areas LzvelySky works across</title>
+            <desc id="map-desc">Three connected paths: software and AI, hardware and robotics, and accessible design.</desc>
+            <path class="wire wire-one" d="M20 35h72l22 22h74l22-22h190"/>
+            <path class="wire wire-two" d="M20 95h44l24-24h105l24 24h183"/>
+            <path class="wire wire-three" d="M20 155h95l25-25h72l25 25h149"/>
+            <circle cx="92" cy="35" r="4"/><circle cx="188" cy="57" r="4"/><circle cx="330" cy="35" r="4"/>
+            <circle cx="88" cy="71" r="4"/><circle cx="193" cy="71" r="4"/><circle cx="315" cy="95" r="4"/>
+            <circle cx="115" cy="155" r="4"/><circle cx="212" cy="130" r="4"/><circle cx="333" cy="155" r="4"/>
+            <text x="24" y="26">01 / COMPUTE</text><text x="24" y="86">02 / BUILD</text><text x="24" y="146">03 / ACCESS</text>
+            <text x="299" y="25">AI · WEB</text><text x="284" y="85">ROBOTICS</text><text x="280" y="145">PEOPLE FIRST</text>
+          </svg>
+          <p class="map-caption">Different materials, same question: who does this help?</p>
         </div>
-        <div class="status-card">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Usually unresponsive</span>
+        <p class="status-note"><span class="status-dot" aria-hidden="true"></span><span>Usually unresponsive</span><span class="status-aside">(email still works)</span></p>
+      </aside>
+      <p class="hero-index" aria-hidden="true">LZ—001<br>PERSONAL INDEX</p>
+    </section>
+
+    <section class="ruled-section" id="about" aria-labelledby="about-title">
+      <div class="page-shell section-layout">
+        <div class="section-rail"><span>01</span><span class="rail-line"></span><span>ABOUT</span></div>
+        <div class="section-content about-content">
+          <header class="section-heading">
+            <p class="overline">A little context</p>
+            <h2 id="about-title">Built by curiosity.<br><em>Kept honest by people.</em></h2>
+          </header>
+          <div class="about-copy">
+            <div class="prose">
+              <p>I’m a U.S.-based high school student, designer, writer, and programmer. I’m interested in systems: how a thing is put together, what it makes possible, and whether it works for the people using it.</p>
+              <p>I’m a FIRST Robotics Competition alumnus. On my team, I contributed to robot design and led sponsorship acquisition. I also served as a Student Senator and helped start student-led programs, including a Youth Poverty Support Council.</p>
+              <p>My current orbit includes generative AI and LLMs, embedded systems, and web platforms. I’m also concepting <em>LzvelyHumanity</em>, a nonprofit idea focused on human rights for people in the U.S.</p>
+            </div>
+            <aside class="margin-note"><span class="note-mark">↳</span><p>Designing high-tech projects since age five. The early prototypes involved sketches, breadboards, and a lot of LEDs.</p></aside>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ ABOUT ============ -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <span class="section-index">01</span>
-        <h2>About</h2>
-      </header>
-      <div class="about-grid">
-        <div class="prose reveal">
-          <p>
-            Hey! I'm <strong>LzvelySky</strong> — a U.S.-based designer, writer, and programmer with a focus on
-            building impactful, systems-driven work. I specialize in coding and ML.
-          </p>
-          <p>
-            I'm a <strong>FIRST Robotics Competition</strong> alumnus from a top-performing team, where I
-            contributed to robot design and led sponsorship acquisition. I'm also a former
-            <strong>Student Senator</strong> with experience initiating and scaling student-led programs,
-            including founding a Youth Poverty Support Council aimed at driving tangible community impact.
-          </p>
-          <p>
-            These days my time goes to generative AI and LLMs, embedded systems, and web platforms — and to
-            figuring out how much of my hardware budget can be justified with a "learning purpose."
-          </p>
-          <p class="fun-fact">
-            <svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg>
-            <span><strong>Fun fact:</strong> I've been designing high-tech projects since age 5.</span>
-          </p>
+    <section class="ruled-section" id="focus" aria-labelledby="focus-title">
+      <div class="page-shell section-layout">
+        <div class="section-rail"><span>02</span><span class="rail-line"></span><span>FOCUS</span></div>
+        <div class="section-content">
+          <header class="section-heading section-heading-row">
+            <div><p class="overline">Where I spend my attention</p><h2 id="focus-title">A mixed toolkit.</h2></div>
+            <p class="section-aside">Not a checklist. Just the subjects, tools, and side interests that keep finding their way into the work.</p>
+          </header>
+          <div class="focus-list">
+            <article class="focus-row">
+              <span class="row-number">A</span><h3>Intelligence</h3>
+              <div><p>Generative AI &amp; LLMs</p><p>Python · JavaScript · TypeScript</p></div>
+            </article>
+            <article class="focus-row">
+              <span class="row-number">B</span><h3>Physical computing</h3>
+              <div><p>Robotics · Embedded systems</p><p>Arduino · Jetson Orin Nano · BeagleBone Black · ODROID-XU4 · Raspberry Pi</p></div>
+            </article>
+            <article class="focus-row">
+              <span class="row-number">C</span><h3>Useful software</h3>
+              <div><p>Full-stack web development · Accessibility-focused design</p><p>HTML · CSS · C / C++ · Bash · Git · Discord.py</p></div>
+            </article>
+            <article class="focus-row">
+              <span class="row-number">D</span><h3>Light &amp; signal</h3>
+              <div><p>Govee · Philips Hue · PAUTIX · DMX</p><p>A home for the LEDs, controllers, and experiments.</p></div>
+            </article>
+          </div>
+          <div class="offscreen-list"><span>Outside the technical stuff:</span> design, writing, research, nature, music, cooking, baking, travel, photography, and robotics.</div>
         </div>
-
-        <aside class="fact-card reveal">
-          <h3>At a glance</h3>
-          <dl class="fact-list">
-            <div><dt>Focus</dt><dd>Generative AI, robotics &amp; embedded systems</dd></div>
-            <div><dt>Background</dt><dd>FRC Alumni, Student Government Alumni</dd></div>
-            <div><dt>Building</dt><dd>Accessible web platforms &amp; personal sites</dd></div>
-            <div><dt>Currently</dt><dd>Concepting <em>LzvelyHumanity</em>, a nonprofit for human rights</dd></div>
-            <div><dt>Program</dt><dd>GitHub Developer Program Member</dd></div>
-          </dl>
-        </aside>
       </div>
+    </section>
+
+    <section class="ruled-section" id="timeline" aria-labelledby="timeline-title">
+      <div class="page-shell section-layout">
+        <div class="section-rail"><span>03</span><span class="rail-line"></span><span>NOTES</span></div>
+        <div class="section-content">
+          <header class="section-heading section-heading-row">
+            <div><p class="overline">A few milestones</p><h2 id="timeline-title">In the margins.</h2></div>
+            <p class="section-aside">This page is a snapshot, not a live résumé. Some details may have moved on.</p>
+          </header>
+          <ol class="timeline">
+            <li><span class="timeline-tag">Now</span><div><h3>Independent projects</h3><p>Exploring <strong>LzvelyHumanity</strong>, a concept nonprofit focused on human rights for U.S. citizens, alongside personal sites and hardware ideas.</p></div></li>
+            <li><span class="timeline-tag">Certified</span><div><h3>AI studies</h3><p><strong>Generative AI in Practice</strong> and <strong>Ethical AI &amp; Introduction to LLMs</strong>.</p></div></li>
+            <li><span class="timeline-tag">Ongoing</span><div><h3>Continuing education</h3><p>Working through <strong>AI-Powered A/B Testing</strong> and <strong>ML for Beginners</strong>.</p></div></li>
+            <li><span class="timeline-tag">Advocacy</span><div><h3>YACEJ · Youth Advisory Coalition on Economic Justice</h3><p>Asked the Youth Action Council how it grades applications, then built a tool to find out.</p><a class="text-link small-link" href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky/yac-tlr" target="_blank" rel="noopener">See yac-tlr <span aria-hidden="true">↗</span></a></div></li>
+            <li><span class="timeline-tag">Leadership</span><div><h3>Student government</h3><p>Former Student Senator. Initiated and scaled student-led programs, including a Youth Poverty Support Council.</p></div></li>
+            <li><span class="timeline-tag">FRC</span><div><h3>FIRST Robotics Competition</h3><p>Alumnus of a top-performing team; contributed to robot design and led sponsorship acquisition efforts.</p></div></li>
+            <li><span class="timeline-tag">The beginning</span><div><h3>Designing since age five</h3><p>Long before the first commit: sketches, breadboards, and more LED strips than strictly necessary.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled-section github-section" id="github" aria-labelledby="github-title">
+      <div class="page-shell section-layout">
+        <div class="section-rail"><span>04</span><span class="rail-line"></span><span>CODE</span></div>
+        <div class="section-content">
+          <header class="section-heading section-heading-row">
+            <div><p class="overline">Open source, among other things</p><h2 id="github-title">The public workbench.</h2></div>
+            <a class="text-link" href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky?tab=repositories" target="_blank" rel="noopener">All repositories <span aria-hidden="true">↗</span></a>
+          </header>
+          <div class="stat-strip" id="stat-row" aria-label="GitHub profile statistics" aria-busy="true">
+            <div><strong class="stat-value" data-stat="repos">—</strong><span>Public repos</span></div>
+            <div><strong class="stat-value" data-stat="followers">—</strong><span>Followers</span></div>
+            <div><strong class="stat-value" data-stat="following">—</strong><span>Following</span></div>
+            <div><strong class="stat-value" data-stat="stars">—</strong><span>Stars received</span></div>
+          </div>
+          <div class="repo-heading"><h3>Recently updated</h3><span class="mono-note">LIVE FROM GITHUB</span></div>
+          <div class="repo-list" id="repo-grid" aria-live="polite" aria-busy="true"><p class="repo-status">Fetching public repositories…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ruled-section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="page-shell section-layout">
+        <div class="section-rail"><span>05</span><span class="rail-line"></span><span>CONTACT</span></div>
+        <div class="section-content contact-layout">
+          <div>
+            <p class="overline">Better with a real conversation</p>
+            <h2 id="contact-title">Have a good<br><em>question?</em></h2>
+            <p class="contact-intro">Discord is quickest. For collaborations, speaking, sponsorship, or anything formal, email works best.</p>
+            <a class="contact-email" href="mailto:sky.biz@icloud.com">sky.biz@icloud.com <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="contact-links" aria-label="Other places to find me">
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://discord.com/users/1395176486100533258" target="_blank" rel="noopener"><span>Discord</span><small>Add me on Discord</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky" target="_blank" rel="noopener"><span>GitHub</span><small>@lversky</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://x.com/LzveSky" target="_blank" rel="noopener"><span>X</span><small>@LzveSky</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://snapchat.com/add/honest.sky" target="_blank" rel="noopener"><span>Snapchat</span><small>honest.sky</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://www.tiktok.com/@its.lzve" target="_blank" rel="noopener"><span>TikTok</span><small>@pretty.boy.otp</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://orcid.org/0009-0000-3310-6950" target="_blank" rel="noopener"><span>ORCID</span><small>0009-0000-3310-6950</small><b aria-hidden="true">↗</b></a>
+            <a href="https://redirect-lzve-ly.pages.dev?to=https://lzvesky.yrs.wtf" target="_blank" rel="noopener"><span>Elsewhere</span><small>lzvesky.yrs.wtf</small><b aria-hidden="true">↗</b></a>
+          </div>
+          <p class="contact-extra">Also on <a href="https://redirect-lzve-ly.pages.dev?to=https://sky-link-in-bio.pages.dev/contact-me.html" target="_blank" rel="noopener">my link-in-bio</a> and <a href="https://redirect-lzve-ly.pages.dev?to=https://beta.music.apple.com/library/playlist/p.81UbMl6JMO" target="_blank" rel="noopener">my favorite songs</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="fine-print" aria-label="Site notes">
+    <div class="page-shell fine-print-inner">
+      <span class="fine-print-mark">*</span>
+      <p><strong>A note on freshness.</strong> Some timeline entries, project details, and links may be outdated, retired, renamed, or superseded. GitHub statistics and repositories are fetched live. Parts of the bio have been AI-assisted; the code is written by LZVE.ly. Corrections are welcome.</p>
     </div>
-  </section>
+  </aside>
 
-  <!-- ============ SKILLS ============ -->
-  <section class="section section-alt" id="skills">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <span class="section-index">02</span>
-        <h2>Skills &amp; stack</h2>
-      </header>
-
-      <div class="skill-groups">
-        <article class="skill-card reveal">
-          <h3>Focus areas</h3>
-          <ul class="chips">
-            <li class="chip chip-accent">Generative AI &amp; LLMs</li>
-            <li class="chip chip-accent">Robotics</li>
-            <li class="chip chip-accent">Embedded Systems</li>
-            <li class="chip chip-accent">Full-Stack Web Dev</li>
-            <li class="chip chip-accent">Accessibility-Focused Design</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>Languages</h3>
-          <ul class="chips">
-            <li class="chip">Python</li>
-            <li class="chip">JavaScript</li>
-            <li class="chip">TypeScript</li>
-            <li class="chip">HTML</li>
-            <li class="chip">CSS</li>
-            <li class="chip">C / C++</li>
-            <li class="chip">Bash</li>
-            <li class="chip">Git</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>Hardware &amp; platforms</h3>
-          <ul class="chips">
-            <li class="chip">Arduino</li>
-            <li class="chip">Jetson Orin Nano</li>
-            <li class="chip">BeagleBone Black</li>
-            <li class="chip">ODROID-XU4</li>
-            <li class="chip">Discord.py</li>
-            <li class="chip">Raspberry Pi</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>LED &amp; lighting systems</h3>
-          <ul class="chips">
-            <li class="chip">Govee</li>
-            <li class="chip">Philips Hue</li>
-            <li class="chip">PAUTIX</li>
-            <li class="chip">DMX</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="skill-card wide reveal">
-        <h3>Beyond the screen</h3>
-        <ul class="chips">
-          <li class="chip chip-soft">Design</li>
-          <li class="chip chip-soft">Writing</li>
-          <li class="chip chip-soft">Research</li>
-          <li class="chip chip-soft">Nature</li>
-          <li class="chip chip-soft">Music</li>
-          <li class="chip chip-soft">Cooking</li>
-          <li class="chip chip-soft">Baking</li>
-          <li class="chip chip-soft">Travel</li>
-          <li class="chip chip-soft">Photography</li>
-          <li class="chip chip-soft">Robotics</li>
-        </ul>
-      </div>
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <p>Made by <strong>LzvelySky</strong> · <a href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky/lversky.github.io" target="_blank" rel="noopener">Source on GitHub</a> · <a href="roblox/">Roblox</a></p>
+      <p class="footer-meta">BSD 3-Clause <span aria-hidden="true">·</span> <span id="year"></span> <span class="footer-mark">LZ—001</span></p>
     </div>
-  </section>
+  </footer>
 
-  <!-- ============ TIMELINE ============ -->
-  <section class="section" id="timeline">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <span class="section-index">03</span>
-        <h2>Timeline</h2>
-      </header>
-
-      <ol class="timeline">
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">Now</span>
-            <h3>Independent projects</h3>
-            <p>Brainstorming <strong>LzvelyHumanity</strong> — a concept nonprofit protecting the human rights of US citizens. Multiple personal sites and high-tech design concepts in flight.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">Certified</span>
-            <h3>AI certifications</h3>
-            <p><strong>Generative AI in Practice</strong> and <strong>Ethical AI &amp; Introduction to LLMs</strong>.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">Ongoing</span>
-            <h3>Continuing education</h3>
-            <p>Currently working through <strong>AI-Powered A/B Testing</strong> and <strong>ML for Beginners</strong>.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">Advocacy</span>
-            <h3>YACEJ — Youth Advisory Coalition on Economic Justice</h3>
-            <p>Advocating equity and empowering action. Asked the Youth Action Council how it grades our applications — and built the tool to find out.</p>
-            <p class="tl-links">
-              <a href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky/yac-tlr" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-repo"/></svg> yac-tlr</a>
-            </p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">Leadership</span>
-            <h3>Student government</h3>
-            <p>Former <strong>Student Senator</strong>. Initiated and scaled student-led programs, founding a Youth Poverty Support Council aimed at tangible community impact.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">FRC</span>
-            <h3>FIRST Robotics Competition</h3>
-            <p>Alumnus of a top-performing team. Contributed to robot design and led sponsorship acquisition efforts.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="tl-marker tl-marker-start" aria-hidden="true"></span>
-          <div class="tl-body">
-            <span class="tl-when">The beginning</span>
-            <h3>Designing since age 5</h3>
-            <p>Long before the first commit, there were sketches, breadboards, and far too many LED strips.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ GITHUB ============ -->
-  <section class="section section-alt" id="github">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <span class="section-index">04</span>
-        <h2>GitHub</h2>
-      </header>
-
-      <div class="stat-row" id="stat-row">
-        <div class="stat"><span class="stat-value" data-stat="repos">15</span><span class="stat-label">Public repos</span></div>
-        <div class="stat"><span class="stat-value" data-stat="followers">0</span><span class="stat-label">Followers</span></div>
-        <div class="stat"><span class="stat-value" data-stat="following">1</span><span class="stat-label">Following</span></div>
-        <div class="stat"><span class="stat-value" data-stat="stars">0</span><span class="stat-label">Stars received</span></div>
-      </div>
-
-      <div class="repo-head reveal">
-        <h3>Selected work</h3>
-        <a class="link-more" href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky?tab=repositories" target="_blank" rel="noopener">
-          View all repositories <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-
-      <div class="repo-grid" id="repo-grid">
-        <p class="repo-status" id="repo-status">Loading repositories…</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <span class="section-index">05</span>
-        <h2>Contact</h2>
-      </header>
-
-      <p class="section-lede reveal">
-        The fastest way to reach me is Discord. For anything formal — collaborations, speaking, sponsorship —
-        email works best.
-      </p>
-
-      <div class="contact-grid">
-        <a class="contact-card reveal" href="mailto:sky.biz@icloud.com">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
-          <span class="contact-text"><strong>Email</strong><span>sky.biz@icloud.com</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://discord.com/users/1395176486100533258" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-discord"/></svg></span>
-          <span class="contact-text"><strong>Discord</strong><span>Add me on Discord</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></span>
-          <span class="contact-text"><strong>GitHub</strong><span>@lversky</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://x.com/LzveSky" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>
-          <span class="contact-text"><strong>X</strong><span>@LzveSky</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://snapchat.com/add/honest.sky" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-snapchat"/></svg></span>
-          <span class="contact-text"><strong>Snapchat</strong><span>honest.sky</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://www.tiktok.com/@its.lzve" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span>
-          <span class="contact-text"><strong>TikTok</strong><span>@pretty.boy.otp</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://orcid.org/0009-0000-3310-6950" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-orcid"/></svg></span>
-          <span class="contact-text"><strong>ORCID</strong><span>0009-0000-3310-6950</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="contact-card reveal" href="https://redirect-lzve-ly.pages.dev?to=https://lzvesky.yrs.wtf" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></span>
-          <span class="contact-text"><strong>Other site</strong><span>lzvesky.yrs.wtf</span></span>
-          <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-
-      <p class="contact-foot reveal">
-        Also on <a href="https://redirect-lzve-ly.pages.dev?to=https://sky-link-in-bio.pages.dev/contact-me.html" target="_blank" rel="noopener">my link-in-bio</a>
-        and <a href="https://redirect-lzve-ly.pages.dev?to=https://beta.music.apple.com/library/playlist/p.81UbMl6JMO" target="_blank" rel="noopener">my favorite songs</a>.
-      </p>
-    </div>
-  </section>
-</main>
-
-<aside class="footnote" id="fn-1" role="doc-footnote">
-  <div class="wrap footnote-inner">
-    <span class="fn-marker" aria-hidden="true">1</span>
-    <div class="footnote-body">
-      <p class="footnote-lead">
-        <strong>Some information on this page is outdated or deprecated.</strong>
-        Timeline entries, project details, and links reflect past work and aren't always kept up to date,
-        and some of the projects and links referenced here have since been retired, renamed, or superseded.
-      </p>
-      <p class="footnote-note">
-        The GitHub statistics and repository list are pulled live from the API and are always current.
-        If something here looks wrong or stale, please let me know — corrections are welcome.
-        Code Written by LZVE.ly, text by AI.
-      </p>
-      <p class="fn-back"><a href="#fnref-1" role="doc-backlink" aria-label="Back to reference 1">&uarr; Back to text</a></p>
-    </div>
-  </div>
-</aside>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <p>Built by <strong>LzvelySky</strong> — <a href="https://redirect-lzve-ly.pages.dev?to=https://github.com/lversky/lversky.github.io" target="_blank" rel="noopener">source on GitHub</a> · <a href="roblox/">Roblox</a></p>
-    <p class="footer-meta">BSD 3-Clause &middot; <span id="year"></span></p>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
