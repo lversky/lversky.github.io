@@ -127,6 +127,13 @@ h1, h2 { font-family: var(--serif); font-weight: 400; }
 .wiring-diagram .wire-three { stroke: var(--green); }
 .wiring-diagram circle { fill: var(--paper-raised); stroke: var(--orange); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .wiring-diagram text { fill: var(--muted); font-family: var(--mono); font-size: 8px; letter-spacing: .7px; }
+.wiring-diagram [data-track] { transition: opacity .22s ease, stroke .22s ease; }
+.wiring-diagram[data-focus="compute"] [data-track]:not([data-track="compute"]), .wiring-diagram[data-focus="build"] [data-track]:not([data-track="build"]), .wiring-diagram[data-focus="access"] [data-track]:not([data-track="access"]) { opacity: .2; }
+.wiring-diagram[data-focus="compute"] .wire[data-track="compute"], .wiring-diagram[data-focus="build"] .wire[data-track="build"], .wiring-diagram[data-focus="access"] .wire[data-track="access"] { stroke-dasharray: 9 5; stroke-dashoffset: 42; animation: trace-route .75s var(--ease) forwards; }
+@keyframes trace-route { to { stroke-dashoffset: 0; } }
+.map-controls { display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: .15rem 0 .7rem; }
+.map-controls button { padding: .14rem 0; border: 0; border-bottom: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer; font-family: var(--mono); font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; transition: color .18s ease, border-color .18s ease; }
+.map-controls button:hover, .map-controls button[aria-pressed="true"] { border-bottom-color: var(--violet); color: var(--violet); }
 .map-caption { padding-top: .4rem; border-top: 1px solid var(--rule); color: var(--ink-soft); font-family: var(--serif); font-size: 1.02rem; font-style: italic; }
 .status-note { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: 1.5rem; color: var(--ink-soft); font-family: var(--mono); font-size: .66rem; }
 .status-aside { color: var(--muted); }
@@ -178,13 +185,26 @@ h2 { font-size: clamp(2.8rem, 6.8vw, 5.3rem); letter-spacing: -.04em; line-heigh
 .repo-heading h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; }
 .mono-note { font-size: .57rem; }
 .repo-list { border-top: 1px solid var(--rule-strong); }
-.repo-card { display: grid; grid-template-columns: minmax(120px, .62fr) minmax(0, 1.25fr) minmax(105px, .55fr); gap: 1rem; align-items: baseline; padding: .86rem 0; border-bottom: 1px solid var(--rule); }
-.repo-title { display: inline-flex; align-items: center; gap: .45rem; color: var(--ink); font-family: var(--serif); font-size: 1.2rem; text-decoration: none; overflow-wrap: anywhere; }
-.repo-title::after { content: "↗"; color: var(--violet); font-family: var(--mono); font-size: .72rem; }
-.repo-title:hover { color: var(--violet); }
+.repo-item { border-bottom: 1px solid var(--rule); transition: background-color .2s ease; }
+.repo-item:hover, .repo-item[open] { background: color-mix(in srgb, var(--paper-raised) 72%, transparent); }
+.repo-summary { display: grid; grid-template-columns: minmax(120px, .62fr) minmax(0, 1.25fr) minmax(105px, .55fr); gap: 1rem; align-items: baseline; padding: .86rem .4rem; cursor: pointer; list-style: none; }
+.repo-summary::-webkit-details-marker { display: none; }
+.repo-summary:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+.repo-summary-title { display: inline-flex; align-items: center; justify-content: space-between; gap: .45rem; min-width: 0; }
+.repo-title { color: var(--ink); font-family: var(--serif); font-size: 1.2rem; overflow-wrap: anywhere; transition: color .18s ease; }
+.repo-summary:hover .repo-title, .repo-item[open] .repo-title { color: var(--violet); }
+.repo-chevron { flex: 0 0 auto; color: var(--violet); font-family: var(--mono); font-size: .76rem; transition: transform .2s var(--ease); }
+.repo-item[open] .repo-chevron { transform: rotate(180deg); }
 .repo-desc { color: var(--ink-soft); font-size: .77rem; }
 .repo-foot { display: flex; justify-content: flex-end; gap: .7rem; color: var(--muted); font-family: var(--mono); font-size: .62rem; }
 .repo-foot span { display: inline-flex; align-items: center; gap: .25rem; }
+.repo-details { border-top: 1px dashed var(--rule); }
+.repo-detail-inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem 1.2rem; padding: .65rem .4rem .85rem; animation: detail-arrive .2s ease-out both; }
+.repo-detail-meta { color: var(--muted); font-family: var(--mono); font-size: .62rem; }
+.repo-detail-meta time { color: var(--ink-soft); }
+.repo-detail-link { color: var(--violet); font-size: .73rem; font-weight: 600; text-decoration: none; }
+.repo-detail-link:hover { color: var(--orange); text-decoration: underline; }
+@keyframes detail-arrive { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
 .lang-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--violet); }
 .repo-status { padding: 1rem 0; color: var(--muted); font-size: .8rem; }
 
@@ -275,10 +295,12 @@ h2 { font-size: clamp(2.8rem, 6.8vw, 5.3rem); letter-spacing: -.04em; line-heigh
   .stat-strip > div:nth-child(4) { border-top: 1px solid var(--rule); }
   .stat-value { font-size: 1.9rem; }
   .repo-heading { align-items: center; }
-  .repo-card { grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .65rem; padding-block: .75rem; }
+  .repo-summary { grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .65rem; padding-block: .75rem; }
   .repo-title { font-size: 1.08rem; }
+  .repo-summary-title { grid-column: 1; grid-row: 1; }
   .repo-desc { grid-column: 1 / -1; grid-row: 2; }
   .repo-foot { grid-column: 2; grid-row: 1; gap: .4rem; font-size: .56rem; }
+  .repo-detail-inner { gap: .35rem .85rem; padding-inline: .5rem; }
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
   .contact-layout h2 { font-size: 4.5rem; }
   .contact-extra { grid-column: auto; }
@@ -297,6 +319,7 @@ h2 { font-size: clamp(2.8rem, 6.8vw, 5.3rem); letter-spacing: -.04em; line-heigh
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .wiring-diagram [data-track], .repo-detail-inner { animation: none !important; }
 }
 
 @media print {

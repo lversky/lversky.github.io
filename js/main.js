@@ -70,6 +70,29 @@
     });
   }
 
+  var mapDiagram = document.querySelector('.wiring-diagram');
+  var mapCaption = document.getElementById('map-caption');
+  var mapButtons = Array.prototype.slice.call(document.querySelectorAll('[data-track-select]'));
+  var mapCopy = {
+    all: 'Different materials, same question: who does this help?',
+    compute: 'Compute: generative AI, language models, and web software.',
+    build: 'Build: robotics, embedded systems, and hardware.',
+    access: 'Access: making technology easier to use.'
+  };
+  if (mapDiagram && mapCaption && mapButtons.length) {
+    mapButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var track = button.getAttribute('data-track-select');
+        if (!Object.prototype.hasOwnProperty.call(mapCopy, track)) return;
+        mapDiagram.setAttribute('data-focus', track);
+        mapCaption.textContent = mapCopy[track];
+        mapButtons.forEach(function (item) {
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+      });
+    });
+  }
+
   var sectionLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
   var watchedSections = sectionLinks.map(function (link) {
     return document.querySelector(link.getAttribute('href'));
@@ -126,21 +149,29 @@
   }
 
   function makeRepoCard(repo) {
-    var card = document.createElement('article');
-    card.className = 'repo-card';
+    var card = document.createElement('details');
+    card.className = 'repo-item';
 
-    var title = document.createElement('a');
+    var summary = document.createElement('summary');
+    summary.className = 'repo-summary';
+
+    var summaryTitle = document.createElement('span');
+    summaryTitle.className = 'repo-summary-title';
+    var title = document.createElement('span');
     title.className = 'repo-title';
-    title.href = repo.html_url;
-    title.target = '_blank';
-    title.rel = 'noopener noreferrer';
     title.textContent = repo.name || 'Untitled repository';
+    var chevron = document.createElement('span');
+    chevron.className = 'repo-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.textContent = '↴';
+    summaryTitle.appendChild(title);
+    summaryTitle.appendChild(chevron);
 
-    var description = document.createElement('p');
+    var description = document.createElement('span');
     description.className = 'repo-desc';
     description.textContent = repo.description || 'No description added yet.';
 
-    var foot = document.createElement('div');
+    var foot = document.createElement('span');
     foot.className = 'repo-foot';
     if (repo.language) {
       var lang = document.createElement('span');
@@ -163,9 +194,64 @@
       foot.appendChild(fork);
     }
 
-    card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(foot);
+    summary.appendChild(summaryTitle);
+    summary.appendChild(description);
+    summary.appendChild(foot);
+
+    var details = document.createElement('div');
+    details.className = 'repo-details';
+    var detailInner = document.createElement('div');
+    detailInner.className = 'repo-detail-inner';
+
+    if (repo.updated_at) {
+      var updatedDate = new Date(repo.updated_at);
+      if (Number.isFinite(updatedDate.getTime())) {
+        var updated = document.createElement('p');
+        updated.className = 'repo-detail-meta';
+        var time = document.createElement('time');
+        time.dateTime = updatedDate.toISOString();
+        time.textContent = new Intl.DateTimeFormat(navigator.language || 'en-US', {
+          month: 'short', day: 'numeric', year: 'numeric'
+        }).format(updatedDate);
+        updated.appendChild(document.createTextNode('Updated '));
+        updated.appendChild(time);
+        detailInner.appendChild(updated);
+      }
+    }
+
+    if (repo.default_branch) {
+      var branch = document.createElement('p');
+      branch.className = 'repo-detail-meta';
+      branch.textContent = 'Branch ' + repo.default_branch;
+      detailInner.appendChild(branch);
+    }
+
+    if (repo.homepage) {
+      try {
+        var homepage = new URL(repo.homepage, window.location.href);
+        if (homepage.protocol === 'https:' || homepage.protocol === 'http:') {
+          var siteLink = document.createElement('a');
+          siteLink.className = 'repo-detail-link';
+          siteLink.href = homepage.href;
+          siteLink.target = '_blank';
+          siteLink.rel = 'noopener noreferrer';
+          siteLink.textContent = 'Project site ↗';
+          detailInner.appendChild(siteLink);
+        }
+      } catch (_) { /* Ignore invalid project-homepage URLs from the API. */ }
+    }
+
+    var repoLink = document.createElement('a');
+    repoLink.className = 'repo-detail-link';
+    repoLink.href = repo.html_url || ('https://github.com/' + GITHUB_USER);
+    repoLink.target = '_blank';
+    repoLink.rel = 'noopener noreferrer';
+    repoLink.textContent = 'Open repository ↗';
+    detailInner.appendChild(repoLink);
+    details.appendChild(detailInner);
+
+    card.appendChild(summary);
+    card.appendChild(details);
     return card;
   }
 
