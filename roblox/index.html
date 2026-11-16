@@ -30,6 +30,72 @@
     }
   })();
 </script>
+
+<style>
+/* Roblox page fix — the classes below were missing from ../css/style.css,
+   so the page rendered unstyled (huge text, no layout, giant icons).
+   These rules define them, mobile-first, overriding the old .hero rules. */
+html,body{overflow-x:hidden}
+.wrap{width:min(100% - 2 * var(--gutter), var(--page));margin-inline:auto}
+.icon{width:1em;height:1em;flex:none;vertical-align:-.12em}
+.icon-sprite{display:none}
+.site-header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule)}
+.header-inner{display:flex;align-items:center;gap:1rem;min-height:var(--header-height)}
+.brand{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:-.03em}
+.brand-mark{display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border:1px solid var(--ink);border-radius:4px;font-family:var(--serif)}
+.brand-dot{color:var(--violet);font-family:var(--serif);font-weight:400;font-style:italic}
+.site-nav{display:none}
+.site-nav a{color:var(--ink-soft);font-size:.82rem;text-decoration:none}
+.site-nav a.active{color:var(--violet);text-decoration:underline;text-underline-offset:.3em}
+.header-actions{margin-left:auto}
+.theme-toggle{border:1px solid var(--rule-strong);background:transparent;border-radius:999px;padding:.4rem .6rem;cursor:pointer;color:var(--ink-soft)}
+@media (min-width:720px){.site-nav{display:flex;gap:1.2rem;margin-left:auto}.header-actions{margin-left:0}}
+.hero{position:relative;display:block;min-height:0;padding:3rem 0 3.5rem;align-items:normal}
+.hero-glow{display:none}
+.hero-inner{display:flex;flex-direction:column;gap:2rem}
+.hero-copy{min-width:0}
+.eyebrow{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem}
+.hero h1{max-width:none;font-size:clamp(2.6rem,11vw,4.5rem);letter-spacing:-.04em;line-height:.95;overflow-wrap:anywhere}
+.hero-role{margin-top:.6rem;font-family:var(--mono);font-size:.95rem;color:var(--ink-soft)}
+.hero-bio{margin-top:.4rem;color:var(--muted);font-size:.9rem;overflow-wrap:anywhere}
+.hero-meta{margin-top:.8rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;font-weight:600;font-size:.9rem;padding:.65rem 1rem;border-radius:4px;border:1px solid var(--ink);color:var(--ink)}
+.btn-primary{background:var(--violet);border-color:var(--violet);color:#fff}
+.btn-ghost{background:transparent}
+.hero-art{display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
+.avatar-ring{border:1px solid var(--rule-strong);border-radius:12px;padding:.6rem;background:var(--paper-raised);transform:rotate(-2deg)}
+.avatar-ring img,.avatar{width:160px;height:160px;object-fit:cover;border-radius:8px}
+.status-card{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rule-strong);border-radius:999px;padding:.4rem .9rem;background:var(--paper-raised);font-size:.85rem}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+@media (min-width:720px){.hero-inner{flex-direction:row;align-items:center;justify-content:space-between}.hero-copy{flex:1}.hero-art{align-items:flex-end}}
+.section{padding:3rem 0}
+.section-alt{background:var(--paper-deep)}
+.section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
+.section-index{color:var(--orange);font-family:var(--mono);font-size:.75rem}
+.section-head h2{font-family:var(--serif);font-size:clamp(1.8rem,6vw,2.6rem);font-weight:400;letter-spacing:-.02em}
+.stat-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.stat{border:1px solid var(--rule-strong);border-radius:8px;padding:.9rem 1rem;background:var(--paper-raised);min-width:0}
+.stat-value{display:block;color:var(--violet);font-family:var(--serif);font-size:1.35rem;line-height:1.1;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.stat-label{display:block;margin-top:.3rem;color:var(--muted);font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+@media (min-width:720px){.stat-row{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.repo-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+.repo-card{border:1px solid var(--rule-strong);border-radius:8px;padding:1rem 1.1rem;background:var(--paper-raised);min-width:0}
+.repo-title{color:var(--ink);font-family:var(--serif);font-size:1.25rem;overflow-wrap:anywhere}
+.repo-desc{margin-top:.3rem;color:var(--ink-soft);font-size:.9rem}
+.repo-foot{display:flex;gap:1rem;margin-top:.8rem;color:var(--muted);font-family:var(--mono);font-size:.68rem}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:.8rem}
+@media (min-width:720px){.contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.contact-card{display:flex;align-items:center;gap:.8rem;border:1px solid var(--rule-strong);border-radius:8px;padding:.9rem 1rem;background:var(--paper-raised);color:var(--ink);text-decoration:none;min-width:0}
+.contact-icon{font-size:1.2rem;flex:none}
+.contact-text{display:flex;flex-direction:column;min-width:0;flex:1}
+.contact-text strong{overflow-wrap:anywhere}
+.contact-text span{color:var(--muted);font-size:.85rem}
+.contact-arrow{width:1.1em;height:1.1em;color:var(--violet);flex:none}
+.site-footer{border-top:1px solid var(--rule);padding:1.5rem 0 2rem}
+.footer-inner{display:flex;flex-wrap:wrap;gap:.4rem 2rem;justify-content:space-between}
+.footer-meta{color:var(--muted);font-family:var(--mono);font-size:.68rem}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
