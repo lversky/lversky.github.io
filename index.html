@@ -301,6 +301,10 @@ button{font:inherit;color:inherit}
 .rate-caps p{flex-basis:100%;font-size:.88rem;color:var(--ink-soft)}
 .hire-email-line{margin-top:.9rem;font-size:.9rem;color:var(--ink-soft)}
 .hire-email-line a{font-weight:700;color:var(--ink)}
+.tally-embed{background:var(--card);border:1px solid var(--rule-strong);border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:1.6rem}
+.tally-embed h3{font-size:1.05rem;margin-bottom:.3rem}
+.tally-embed>p{font-size:.9rem;color:var(--ink-soft);margin-bottom:.9rem}
+.tally-embed iframe{display:block;width:100%;min-height:800px;border:0;background:transparent}
 
 /* contact */
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:2.5rem;align-items:start}
@@ -652,8 +656,15 @@ button{font:inherit;color:inherit}
           </div>
         </div>
 
+        <div class="tally-embed">
+          <h3>Request a project</h3>
+          <p>Fill in the form below — it goes straight to me, and I’ll reply by email with next steps.</p>
+          <iframe data-tally-src="https://tally.so/embed/2jAXAM?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="LZVE Commissions — Project Request"></iframe>
+          <script src="https://tally.so/widgets/embed.js"></script>
+        </div>
+
         <div class="hire-cta">
-          <div><strong>Request a project by email</strong><p>Tell me what you want built, coded, or designed, and whether it’s coding, design, or both — I’ll reply with next steps.</p></div>
+          <div><strong>Prefer email instead?</strong><p>Tell me what you want built, coded, or designed, and whether it’s coding, design, or both — I’ll reply with next steps.</p></div>
           <a class="btn" href="mailto:lzve.ly@proton.me?subject=Project%20request%20%E2%80%94%20build%20%2F%20code%20%2F%20design&amp;body=Hi%2C%0A%0AI%27d%20like%20to%20request%3A%0A%0AWhat%20I%20want%20built%2Fcoded%2Fdesigned%3A%0A%0AType%20(coding%20%2F%20designing%20%2F%20both)%3A%0A%0AProject%20size%20(ordinary%20%2F%20complex%2C%20if%20you%20know)%3A%0A%0ADetails%3A%0A">Email lzve.ly@proton.me <span aria-hidden="true">→</span></a>
         </div>
         <p class="hire-email-line">Prefer to write your own email? Send it to <a href="mailto:lzve.ly@proton.me">lzve.ly@proton.me</a> <button class="copy-btn" id="copy-proton" type="button">Copy email</button></p>
